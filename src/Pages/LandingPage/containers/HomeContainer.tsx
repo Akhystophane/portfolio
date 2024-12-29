@@ -130,7 +130,7 @@ const HomeContainer = () => {
           <h1 className="text-5xl md:text-7xl font-bold mb-4 text-cyan-400">
             Hi, I'm Emmanuel
           </h1>
-          <p className={`text-xl md:text-2xl ${
+          <p className={`text-sm md:text-2xl ${
             isDarkMode ? 'text-gray-100' : 'text-gray-700'
           }`}>
             A third-year Bachelor’s student at Sciences Po Paris, majoring in <span className='text-cyan-400 font-semibold'>Economics</span> with a minor in Trade and International Finance.
@@ -149,16 +149,6 @@ Passionate about <span className='text-cyan-400 font-semibold'>web development</
             }}
           >
             
-{/*             <ambientLight intensity={0.5} color="white" />
-            <pointLight position={[10, 10, 10]} intensity={1} />
-            <directionalLight position={[5, 5, 5]} intensity={1.5} color="#ffffff" />
-            <directionalLight position={[0, -80, -5]} intensity={1} color="#ffffff" />
-            <pointLight position={[0, 5, 0]} intensity={1} color="#ffffff" /> */}
-
-
-
-  
-
     {/* Multiple spotlights pour bien éclairer votre robot sous différents angles */}
 
 
