@@ -117,7 +117,7 @@ export const ContactSection = () => {
           <ContactButton
             icon={<DownloadIcon />}
             text="Download CV"
-            href="https://emmanuel-portfolio.s3.us-east-1.amazonaws.com/Emmanuel_LANDAU_CV.pdf"
+            href="https://emmanuel-portfolio.s3.us-east-1.amazonaws.com/papers/Emmanuel_LANDAU_CV.pdf"
             isDownload
           />
         </div>
