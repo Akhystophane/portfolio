@@ -170,36 +170,33 @@ Passionate about <span className='text-cyan-400 font-semibold'>web development</
     adjustCamera={false}  // pour ne pas que la caméra bouge automatiquement
   />  
 
-  
-
-
   {/* Lumière ambiante forte pour s'assurer qu'aucune partie n'est trop sombre */}
   <Stage 
     intensity={4} 
     environment="city"
     shadows
-    adjustCamera={false}  // pour ne pas que la caméra bouge automatiquement
-  />     
+    adjustCamera={false}  />     
   <RobotModel mousePosition={mousePosition} />          
 
-          </Canvas>
-                  {/* Button */}
-        <div   className="absolute bottom-8 mb-16 w-full flex justify-center items-center z-10"
+        </Canvas>
+
+        </div>
+
+
+      </div>
+                        {/* Button */}
+        <div   className="absolute bottom-6 md:bottom-24  mb-16 w-full flex  justify-center items-center z-10"
 >
           <motion.a
             href='#projects'
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8 }}
-            className="bg-cyan-400 hover:bg-cyan-500 text-white px-10 py-4 rounded-lg font-semibold shadow-lg transition-all duration-300 hover:scale-105"
+            className="bg-cyan-400 hover:bg-cyan-500 md:text-xl text-white px-10 py-4 md:px-14 md:py-6 rounded-lg font-semibold shadow-lg transition-all duration-300 hover:scale-105"
           >
             Explore my projects
           </motion.a>
         </div>
-        </div>
-
-
-      </div>
     </main>
   );
 };

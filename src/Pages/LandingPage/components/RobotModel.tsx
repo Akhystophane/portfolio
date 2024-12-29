@@ -191,7 +191,7 @@ export function RobotModel({ mousePosition, ...props }: ModelProps) {
       // On applique le spring
       scale={scale}
       rotation-z={rotationZ}
-      position={[0, -1, 0]}
+      position={[0, 0, 0]}
       dispose={null}
     />
   );
