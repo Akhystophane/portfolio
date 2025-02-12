@@ -2,12 +2,7 @@ import { motion } from 'framer-motion';
 import { useTheme } from '../../context/ThemeContext';
 import ProjectType from '../types/types'
 const projects: ProjectType[] = [
-  {
-    title: 'Astronomos',
-    description: 'A dynamic web application that provides personalized astrology insights through videos, text-based content, and interactive conversations with AI-powered chatbots. The backend, developed in Python with Django, utilizes the pyswisseph library, which incorporates NASA’s JPL data to perform precise astrological calculations. The frontend, built with TypeScript and React.js, delivers an intuitive and interactive user interface. User authentication is implemented with Google Firebase, while PostgreSQL is used for secure data management. OpenAI’s API powers the chatbot functionality, allowing users to engage in tailored and conversational astrological experiences.',
-    technologies: ['Python (Django)', 'TypeScript (React)', 'Firebase', 'OpenAI API', 'PostgreSQL'],
-    link: 'https://astrotest-e074e6c33707.herokuapp.com',
-  },
+
   {
     title: "Caste and Income: A Regression Analysis",
     description: "A project developed for an advanced econometrics class at Sciences Po, replicating Siwan Anderson’s 2011 study, Caste as an Impediment to Trade. This analysis examines why household incomes are higher in villages dominated by lower backward agricultural castes compared to those dominated by upper castes in Uttar Pradesh and Bihar. Using OLS, 2SLS, and probit regressions, the study investigates the exogeneity of caste dominance, its impact on household incomes, and the role of groundwater access in income disparities. Conducted using R, the project emphasizes statistical rigor and regression techniques.",
@@ -26,6 +21,11 @@ const projects: ProjectType[] = [
     description: "A digital humanities project who explores the network of characters and fables from La Fontaine's Fables through an interactive 3D visualization, developed for a class at the University of Florida. Built using React and Three.js, the interface highlights the relationships between various animals and the fables they inhabit, providing an engaging and educational perspective on the interconnected themes of the stories. The project demonstrates how digital tools can bring classical literature to life, making complex relationships more accessible and visually intuitive.",
     technologies: ['Javascript (React)', 'Three.js', 'WebGL'],
     link: 'https://akhystophane.github.io/dh_project/',
+  },
+  {
+    title: 'Astronomos',
+    description: 'A dynamic web application that provides personalized astrology insights through videos, text-based content, and interactive conversations with AI-powered chatbots. The backend, developed in Python with Django, utilizes the pyswisseph library, which incorporates NASA’s JPL data to perform precise astrological calculations. The frontend, built with TypeScript and React.js, delivers an intuitive and interactive user interface. User authentication is implemented with Google Firebase, while PostgreSQL is used for secure data management. OpenAI’s API powers the chatbot functionality, allowing users to engage in tailored and conversational astrological experiences.',
+    technologies: ['Python (Django)', 'TypeScript (React)', 'Firebase', 'OpenAI API', 'PostgreSQL'],
   },
   {
     title: "Automated Video Generation Service",
