@@ -1,5 +1,5 @@
 import './App.css'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { HashRouter as Router, Routes, Route } from 'react-router-dom'
 import LandingPage from './Pages/LandingPage/LandingPage'
 import EcomForm from './Pages/EcomForm/EcomForm'
 
