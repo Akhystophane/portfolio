@@ -75,6 +75,37 @@ const EcomForm = () => {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+
+    // Validation des champs obligatoires
+    if (!formData.role.trim()) {
+      alert('Veuillez indiquer votre rôle.');
+      return;
+    }
+    if (!formData.ca_annuel) {
+      alert('Veuillez sélectionner le chiffre d\'affaires annuel.');
+      return;
+    }
+    if (formData.formats.length === 0) {
+      alert('Veuillez sélectionner au moins un format de contenu.');
+      return;
+    }
+    if (!formData.repartition) {
+      alert('Veuillez indiquer la répartition paid/organique.');
+      return;
+    }
+    if (formData.canaux.length === 0) {
+      alert('Veuillez sélectionner au moins un canal.');
+      return;
+    }
+    if (!formData.motion_3d) {
+      alert('Veuillez répondre à la question sur le motion/3D.');
+      return;
+    }
+    if (formData.obstacles.length === 0) {
+      alert('Veuillez sélectionner au moins un obstacle.');
+      return;
+    }
+
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
@@ -141,28 +172,32 @@ const EcomForm = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 py-8 px-4">
+    <div className="min-h-screen py-8 px-4">
       <div className="max-w-3xl mx-auto">
         <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
           {/* Header */}
-          <div className="bg-gradient-to-r from-indigo-600 to-purple-600 px-8 py-6">
+          <div className="bg-gradient-to-r from-slate-900 to-blue-900 px-8 py-6">
             <h1 className="text-3xl font-bold text-white">Enquête - Contenus E-commerce</h1>
-            <p className="text-indigo-100 mt-2">Merci de prendre quelques minutes pour répondre à ce questionnaire.</p>
+            <p className="text-blue-100 mt-2">Votre avis nous intéresse ! Ce questionnaire ne prend que quelques minutes.</p>
           </div>
 
-          {/* Status Messages */}
+          {/* Success Message */}
           {submitStatus === 'success' && (
-            <div className="mx-8 mt-6 p-4 bg-green-50 border border-green-200 rounded-lg">
-              <p className="text-green-800 font-medium">✅ Formulaire soumis avec succès ! Merci pour votre participation.</p>
+            <div className="mx-8 my-12 p-6 bg-green-50 border border-green-200 rounded-lg text-center">
+              <p className="text-green-800 font-medium text-lg">✅ Formulaire soumis avec succès ! Merci pour votre participation.</p>
             </div>
           )}
+
+          {/* Error Message */}
           {submitStatus === 'error' && (
             <div className="mx-8 mt-6 p-4 bg-red-50 border border-red-200 rounded-lg">
               <p className="text-red-800 font-medium">❌ Erreur lors de l'envoi. Veuillez réessayer.</p>
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="p-8 space-y-10">
+          {/* Form - hidden when successfully submitted */}
+          {submitStatus !== 'success' && (
+            <form onSubmit={handleSubmit} className="p-8 space-y-10">
             {/* SECTION 1 */}
             <section>
               <h2 className="text-lg font-semibold text-gray-800 pb-3 border-b-2 border-indigo-100 mb-6">
@@ -203,14 +238,14 @@ const EcomForm = () => {
                 <div>
                   <label className="block text-gray-700 mb-2">
                     <span className="text-gray-400 mr-2">3.</span>
-                    Quel est votre rôle ?
+                    Quel est votre rôle ? <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="text"
                     name="role"
                     value={formData.role}
                     onChange={handleTextChange}
-                    placeholder="Ex : Social media, e-commerce, CRM, marketing, direction artistique, etc."
+                    placeholder="Ex : Social Media Manager, Chef de Projet E-commerce, Responsable Marketing Digital, Directeur Artistique..."
                     className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
                   />
                 </div>
@@ -218,7 +253,7 @@ const EcomForm = () => {
                 <div>
                   <label className="block text-gray-700 mb-3">
                     <span className="text-gray-400 mr-2">4.</span>
-                    Ordre de grandeur du chiffre d'affaires e-commerce annuel
+                    Ordre de grandeur du chiffre d'affaires e-commerce annuel <span className="text-red-500">*</span>
                   </label>
                   <div className="space-y-2">
                     {['< 200 k€', '200 k€ – 1 M€', '1 – 10 M€', '> 10 M€', 'Je ne sais pas'].map((option) => (
@@ -248,7 +283,7 @@ const EcomForm = () => {
                 <div>
                   <label className="block text-gray-700 mb-3">
                     <span className="text-gray-400 mr-2">5.</span>
-                    Quels formats utilisez-vous aujourd'hui ?
+                    Quels formats utilisez-vous aujourd'hui ? <span className="text-red-500">*</span>
                   </label>
                   <div className="space-y-2">
                     {[
@@ -317,7 +352,7 @@ const EcomForm = () => {
                 <div>
                   <label className="block text-gray-700 mb-3">
                     <span className="text-gray-400 mr-2">7.</span>
-                    Quelle est approximativement la répartition paid / organique dans vos actions social/e-commerce ?
+                    Quelle est approximativement la répartition paid / organique dans vos actions social/e-commerce ? <span className="text-red-500">*</span>
                   </label>
                   <div className="space-y-2">
                     {['75% paid', '50/50 paid – organique', '75% organique', 'Je ne sais pas'].map((option) => (
@@ -338,7 +373,7 @@ const EcomForm = () => {
                 <div>
                   <label className="block text-gray-700 mb-3">
                     <span className="text-gray-400 mr-2">8.</span>
-                    Quels canaux sont les plus performants aujourd'hui pour générer des ventes / conversions ?
+                    Quels canaux sont les plus performants aujourd'hui pour générer des ventes / conversions ? <span className="text-red-500">*</span>
                   </label>
                   <div className="space-y-2">
                     {['TikTok', 'Instagram', 'Meta ads global', 'Pinterest', 'Google ads', 'SEO / contenu éditorial', 'CRM/emailing', 'Marketplace / affiliation'].map((option) => (
@@ -386,7 +421,7 @@ const EcomForm = () => {
                 <div>
                   <label className="block text-gray-700 mb-3">
                     <span className="text-gray-400 mr-2">9.</span>
-                    Pensez-vous que l'usage du motion/3D va augmenter dans votre secteur ?
+                    Pensez-vous que l'usage du motion/3D va augmenter dans votre secteur ? <span className="text-red-500">*</span>
                   </label>
                   <div className="space-y-2">
                     {['Oui', 'Peut-être', 'Non'].map((option) => (
@@ -407,7 +442,7 @@ const EcomForm = () => {
                 <div>
                   <label className="block text-gray-700 mb-3">
                     <span className="text-gray-400 mr-2">10.</span>
-                    Quels sont aujourd'hui les plus gros obstacles à la production de contenu performant ?
+                    Quels sont aujourd'hui les plus gros obstacles à la production de contenu performant ? <span className="text-red-500">*</span>
                   </label>
                   <div className="space-y-2">
                     {[
@@ -481,17 +516,18 @@ const EcomForm = () => {
               className={`w-full py-4 px-6 rounded-xl font-semibold text-white text-lg transition-all duration-200 ${
                 isSubmitting
                   ? 'bg-gray-400 cursor-not-allowed'
-                  : 'bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5'
+                  : 'bg-gradient-to-r from-slate-900 to-blue-900 hover:from-slate-800 hover:to-blue-800 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5'
               }`}
             >
               {isSubmitting ? 'Envoi en cours...' : 'Envoyer'}
             </button>
           </form>
+          )}
         </div>
 
         {/* Footer */}
         <p className="text-center text-gray-500 text-sm mt-6">
-          Vos données sont traitées de manière confidentielle.
+          Vos données sont traitées de manière confidentielle. Ce questionnaire est réalisé dans le cadre d'un projet de Master et les données ne seront pas partagées sans votre accord explicite.
         </p>
       </div>
     </div>
